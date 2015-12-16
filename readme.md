@@ -10,15 +10,19 @@ In order to do that, go to your CourseBuilder's dashboard, then click in `Create
 
 ![](https://dl.dropboxusercontent.com/u/34394156/images/coursebuilder/Captura%20de%20pantalla%202015-11-14%20a%20las%202.03.03.png)
 
-The next thing you must do is open the `app.yaml` file in the root folder of your project, and scroll until you see the line:
+The next thing you must do is open the `app.yaml` file in the root folder of your project, and scroll until you see the lines:
 
 `modules.gitkit.gitkit=disabled`
 
-And edit it to leave it like this:
+`modules.oauth2.oauth2=disabled`
+
+And edit them to leave them like this:
 
 `modules.gitkit.gitkit`
 
-Note that we just removed the 'disabled' part, that meas that the gitkit module will be enabled.
+`modules.oauth2.oauth2`
+
+Note that we just removed the 'disabled' part, that means that gitkit and OAuth2 modules will be enabled.
 
 *--Don't deploy the project yet--*
 ###2 - Am I the ADMIN? (The ??? part)
@@ -120,7 +124,9 @@ In the field `Authorized redirect URIs` you have to write your url followed by t
 Example:
 `https://my_coursebuilder_site.appspot.com/modules/gitkit/widget`
 
-Finally click on `Create` and *COPY* the *Client ID* (just where it says *Here is your client ID*).
+Click on `Create` and *COPY* the *Client ID* (just where it says *Here is your client ID*).
+
+Finally, click on `Download JSON` and save the file cliente_secret_xxxxxxx-xxxxxx.json, we will use it later.
 
 Go back to your coursebuilder `Site settings` and paste it in the field `GITKit module client ID`.
 
@@ -160,7 +166,10 @@ In the *Google* provider you must set the 'Rollout'. You can just set it to 100%
 
 *Note that if you select any provider other that Google you'll have to provide the credentials for that service. We will not cover that in this guide but it's quite easy, believe me!*
 
-Finally click on the `Save` button.
+Click on the `Save` button.
+
+Finally, you have to edit the file client_secrets.json from OAuth2 module (coursebuilder_directory/modules/oauth2/client_secrets.json) and replace it's content with the file you downloaded before when created the `OAuth 2.0 client ID` credential.
+
 
 ###3 - Almost there!!! (The satisfaction)
 
